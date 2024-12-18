@@ -53,8 +53,8 @@ public class home {
     }
 
     @PostMapping("/register")
-    public String signup(@RequestParam("fname") String fn, @RequestParam("lname") String ln, @RequestParam("email") String e, @RequestParam("uname") String u, @RequestParam("password") String pass) {
-        Student s = new Student(fn, ln, u, pass, e);
+    public String signup(@RequestParam("fname") String fn, @RequestParam("lname") String ln, @RequestParam("email") String e, @RequestParam("uname") String u, @RequestParam("password") String pass,@RequestParam("cardNum") int CardNum) {
+        Student s = new Student(fn, ln, u, pass, e,CardNum);
        Student x= studentService.save(s);
         U_id = x.getStudent_id();
         return "redirect:/home";
