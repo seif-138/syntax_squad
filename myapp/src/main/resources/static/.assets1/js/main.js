@@ -30,6 +30,23 @@ const passwordRegister = (loginPass, loginEye) => {
 };
 passwordRegister('passwordCreate', 'loginPasswordCreate');
 
+
+/*=============== FORGET PASSWORD = ===============*/
+const passwordforget = (loginPass, loginEye) => {
+    const input = document.getElementById(loginPass),
+        iconEye = document.getElementById(loginEye);
+
+    iconEye.addEventListener('click', () => {
+        // Change password to text
+        input.type === 'password' ? input.type = 'text' : input.type = 'password';
+
+        // Icon change
+        iconEye.classList.toggle('ri-eye-fill');
+        iconEye.classList.toggle('ri-eye-off-fill');
+    });
+};
+passwordforget('forgetpass', 'loginforgetPassword');
+
 /*=============== SHOW HIDE LOGIN & CREATE ACCOUNT ===============*/
 const loginAcessRegister = document.getElementById('loginAccessRegister'),
       buttonRegister = document.getElementById('loginButtonRegister'),

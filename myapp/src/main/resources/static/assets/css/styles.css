@@ -3,6 +3,7 @@
 }
 
 
+
 /*=============== GOOGLE FONTS ===============*/
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap");
 
@@ -60,6 +61,10 @@ button {
 
 body {
   background-color: var(--body-color);
+  background-image: url("../Artboard 1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: -100px;
   color: var(--text-color);
 }
 

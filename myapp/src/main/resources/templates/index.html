@@ -13,11 +13,6 @@
     <title>Responsive login and registration form - Bedimcode</title>
 </head>
 <body>
-    <!--=============== LOGIN IMAGE ===============-->
-    <svg class="login__blob" viewBox="0 0 566 840" xmlns="http://www.w3.org/2000/svg">
-        <!-- Insert your image (recommended size: 1000 x 1200) -->
-        <image class="login__img" href="assets/Artboard 1.png"/>
-    </svg>      
 
     <!--=============== LOGIN ===============-->
     <div class="login container grid" id="loginAccessRegister">
@@ -86,6 +81,11 @@
                                 <i class="ri-id-card-fill login__icon"></i>
                             </div>
                         </div>
+                        <div class="login__box">
+                            <input type="text" id="key" required placeholder=" " class="login__input" name="recover">
+                            <label for="key" class="login__label">recovery_key</label>
+                            <i class="ri-id-card-fill login__icon"></i>
+                        </div>
 
                         <div class="login__box">
                             <input type="text" id="username" required placeholder=" " class="login__input" name="uname">
@@ -107,7 +107,7 @@
 
                         <div class="login__box">
                             <input type="password" id="card" placeholder="123 456 789" class="login__input" name="cardNum">
-                            <label for="passwordCreate" class="login__label">Card Number</label>
+                            <label for="card" class="login__label">Card Number</label>
                             <i class="ri-eye-off-fill login__icon login__password" id="card1"></i>
                         </div>
 
@@ -130,9 +130,9 @@
 
         <form action="" class="login__form">
             <div class="login__box">
-                <input type="email" id="forgotEmail" required placeholder=" " class="login__input">
-                <label for="forgotEmail" class="login__label">Enter your email</label>
-                <i class="ri-mail-fill login__icon"></i>
+                <input type="password" id="forgetpass" required placeholder=" " class="login__input">
+                <label for="forgetpass" class="login__label">Enter your recovery key</label>
+                <i class="ri-eye-off-fill login__icon login__password" id="loginforgetPassword"></i>
             </div>
 
             <button type="submit" class="login__button">Send Reset Link</button>
