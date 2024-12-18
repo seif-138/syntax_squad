@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Syntax Squad</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <!-- Icons (e.g., Remix Icons) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="container">
+        <h1 class="logo"><a href="/home"> Syntax Squad</a></h1>
+        <nav>
+          <ul class="nav-links">
+            <li>
+              <a href="/cart"><i class="ri-shopping-cart-line"></i> Cart</a>
+            </li>
+              <li>
+                  <a href="/"><i ></i> Log out</a>
+              </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <h2 class="hero-title">Welcome to Syntax Squad</h2>
+      </div>
+    </section >
+    <section class="courses" th:if="${!courses.isEmpty()}">
+        <h2 class="course-title">Enrolled Courses</h2>
+      <div class="course-container">
+
+        <div class="course-card" th:each="course: ${courses}">
+          <img src th:src="@{'/image/' + ${course.getId()}}" alt th:alt="${course.getTitle()}" />
+          <div class="content-wrapper">
+            <h3 th:text="${course.getTitle()}"></h3>
+            <p th:text="${course.getDescription()}">
+<!--              Explore C++ course that covers skills in object-oriented programming, performance optimization, and system-level development-->
+            </p>
+            <p>
+              price: <span th:text="'$'+${course.getPrice()}"></span>
+            </p>
+            </p>
+          </div>
+          <div class="btn-container">
+<!--            <a href th:href="@{'/cart/'+${course.getId()}}" class="btn">Add to Cart</a>-->
+            <a href th:href="@{'/details/'+${course.getId()}}" class="btn">View Details</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr>
+    <section class="courses">
+        <h2 class="course-title">unEnrolled Courses</h2>
+        <div class="course-container">
+            <div class="course-card" th:each="notEnroll: ${notE}">
+                <img src th:src="@{'/image/' + ${notEnroll.getId()}}" alt th:alt="${notEnroll.getTitle()}" />
+                <div class="content-wrapper">
+                    <h3 th:text="${notEnroll.getTitle()}"></h3>
+                    <p th:text="${notEnroll.getDescription()}">
+                        <!--              Explore C++ course that covers skills in object-oriented programming, performance optimization, and system-level development-->
+                    </p>
+                    <p>
+                        price: <span th:text="'$'+${notEnroll.getPrice()}"></span>
+                    </p>
+                    </p>
+                </div>
+                <div class="btn-container">
+                    <a href th:href="@{'/cart/'+${notEnroll.getId()}}" class="btn">Add to Cart</a>
+                    <a href th:href="@{'/details/'+${notEnroll.getId()}}" class="btn">View Details</a>
+                </div>
+            </div>
+    </section>
+  </body>
+</html>

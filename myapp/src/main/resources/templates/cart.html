@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart - Syntax Squad</title>
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="container">
+        <h1 class="logo"><a href="/home"> Syntax Squad</a></h1>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/home">Home</a></li>
+            <li>
+              <a href="/cart" class="active"
+                ><i class="ri-shopping-cart-line"></i> Cart</a
+              >
+            </li>
+            <li>
+              <a href="/"><i ></i> Log out</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="cart-section">
+      <div class="container">
+        <h2 class="section-title">Shopping Cart</h2>
+        <div class="cart-container">
+          <ul>
+            <div id="cart-items" th:each="cartItem :${cartItems}">
+              <p th:text="${cartItem.getDescription()}"></p>
+              <p th:text="'$'+${cartItem.getPrice()}"></p>
+              <a class="btn" th:href="@{'/cart/delete/'+${cartItem.getId()}}">Clear</a>
+            </div>
+          </ul>
+          <div class="cart-summary">
+            <h3>Cart Summary</h3>
+            <div class="total">
+              <span>Total:</span>
+              <span id="cart-total" th:text="'$'+${total}">$0.00</span>
+            </div>
+            <a href="/payment" class="btn checkout-btn">Proceed to Checkout</a>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

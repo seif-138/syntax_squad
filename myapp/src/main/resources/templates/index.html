@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--=============== REMIXICONS ===============-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    
+    <title>Responsive login and registration form - Bedimcode</title>
+</head>
+<body>
+    <!--=============== LOGIN IMAGE ===============-->
+    <svg class="login__blob" viewBox="0 0 566 840" xmlns="http://www.w3.org/2000/svg">
+        <!-- Insert your image (recommended size: 1000 x 1200) -->
+        <image class="login__img" href="assets/Artboard 1.png"/>
+    </svg>      
+
+    <!--=============== LOGIN ===============-->
+    <div class="login container grid" id="loginAccessRegister">
+        <!--===== LOGIN ACCESS =====-->
+        <div class="login__access">
+            <h2 class="login__title">Login to Syntax Squad</h2>
+            
+            <div class="login__area">
+                <form action="/login" class="login__form" method="post">
+                    <div class="login__content grid">
+                        <div class="login__box">
+                            <input type="email" id="email" required placeholder=" " class="login__input" name="logmail">
+                            <label for="email" class="login__label">Email</label>
+                            <i class="ri-mail-fill login__icon"></i>
+                        </div>
+    
+                        <div class="login__box">
+                            <input type="password" id="password" required placeholder=" " class="login__input" name="logpass">
+                            <label for="password" class="login__label">Password</label>
+                            <i class="ri-eye-off-fill login__icon login__password" id="loginPassword"></i>
+                        </div>
+                    </div>
+                    <fieldset id="user_type">
+                        <div class="radio_button">
+                            <input id="student_button" type="radio"  value="student" name="user_type">
+                            <label for="student_button" > student</label>
+                        </div>
+                        <div class="radio_button">
+                            <input   id="instructor_button"    type="radio"    value="instructor" name ="user_type">
+
+                            <label for="instructor_button" > instructor</label>
+                        </div>
+
+                    </fieldset>
+                    <a href="#" class="login__forgot" id="showForgotPassword">Forgot your password?</a>
+    
+                    <button type="submit" class="login__button">Login</button>
+                </form>
+
+
+
+                <p class="login__switch">
+                    Don't have an account? 
+                    <button id="loginButtonRegister">REGISTER</button>
+                </p>
+            </div>
+        </div>
+
+        <!--===== LOGIN REGISTER =====-->
+        <div class="login__register">
+            <h1 class="login__title">Create new account.</h1>
+
+            <div class="login__area">
+                <form action="/register" class="login__form" method="post">
+                    <div class="login__content grid">
+                        <div class="login__group grid">
+                            <div class="login__box">
+                                <input type="text" id="names" required placeholder=" " class="login__input" name="fname">
+                                <label for="names" class="login__label">fristName</label>
+                                <i class="ri-id-card-fill login__icon"></i>
+                            </div>
+
+                            <div class="login__box">
+                                <input type="text" id="surnames" required placeholder=" " class="login__input" name="lname">
+                                <label for="surnames" class="login__label">Lastname</label>
+                                <i class="ri-id-card-fill login__icon"></i>
+                            </div>
+                        </div>
+
+                        <div class="login__box">
+                            <input type="text" id="username" required placeholder=" " class="login__input" name="uname">
+                            <label for="surnames" class="login__label">username</label>
+                            <i class="ri-id-card-fill login__icon"></i>
+                        </div>
+
+                        <div class="login__box">
+                            <input type="email" id="emailCreate" required placeholder=" " class="login__input" name="email">
+                            <label for="emailCreate" class="login__label">Email</label>
+                            <i class="ri-mail-fill login__icon"></i>
+                        </div>
+
+                        <div class="login__box">
+                            <input type="password" id="passwordCreate" required placeholder=" " class="login__input" name="password">
+                            <label for="passwordCreate" class="login__label">Password</label>
+                            <i class="ri-eye-off-fill login__icon login__password" id="loginPasswordCreate"></i>
+                        </div>
+
+                        <div class="login__box">
+                            <input type="password" id="card" placeholder="123 456 789" class="login__input" name="password">
+                            <label for="passwordCreate" class="login__label">Card Number</label>
+                            <i class="ri-eye-off-fill login__icon login__password" id="card1"></i>
+                        </div>
+
+                    </div>
+
+                    <button type="submit" class="login__button">Create account</button>
+                </form>
+
+                <p class="login__switch">
+                    Already have an account? 
+                    <button id="loginButtonAccess">Log In</button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!--===== FORGOT PASSWORD =====-->
+    <div class="login__forgot-password" style="display: none;">
+        <h2 class="login__title">Reset Your Password</h2>
+
+        <form action="" class="login__form">
+            <div class="login__box">
+                <input type="email" id="forgotEmail" required placeholder=" " class="login__input">
+                <label for="forgotEmail" class="login__label">Enter your email</label>
+                <i class="ri-mail-fill login__icon"></i>
+            </div>
+
+            <button type="submit" class="login__button">Send Reset Link</button>
+        </form>
+
+        <p class="login__switch">
+            Remembered your password? 
+            <button id="backToLogin">Log In</button>
+        </p>
+    </div>
+
+    <!--=============== MAIN JS ===============-->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

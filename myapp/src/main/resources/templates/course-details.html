@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course Details - Syntax Squad</title>
+    <link rel="stylesheet" th:href="@{/assets/css/styles.css}"/>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="container">
+        <h1 class="logo"><a href="/home"> Syntax Squad</a></h1>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/home">Home</a></li>
+            <li>
+              <a href="/cart"><i class="ri-shopping-cart-line"></i> Cart</a>
+            </li>
+            <li>
+              <a href="/"><i ></i> Log out</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="course-details">
+      <div class="container">
+        <div class="course-details-wrapper">
+          <div class="course-image">
+            <img th:src="@{'/image/' + ${courseDetails.getId()}}" alt="Course Image" />
+          </div>
+          <div class="course-info" >
+            <h1 th:text="${courseDetails.getTitle()}"></h1>
+            <div class="course-meta">
+              <span><i class="ri-time-line"></i> 8 weeks</span>
+              <span><i class="ri-user-line"></i> Beginner Level</span>
+              <span><i class="ri-price-tag-3-line" th:text="'$'+${courseDetails.getPrice()}"></i></span>
+            </div>
+            <div class="course-description">
+              <h2>Course Description</h2>
+              <p th:text="${courseDetails.getDescription()}">
+
+              </p>
+            </div>
+            <div class="course-curriculum">
+              <h2>What You'll Learn</h2>
+              <ul>
+                <li>
+                  <i class="ri-check-line"></i> HTML5 Structure and Semantics
+                </li>
+                <li><i class="ri-check-line"></i> CSS3 Styling and Flexbox</li>
+                <li><i class="ri-check-line"></i> JavaScript Fundamentals</li>
+                <li><i class="ri-check-line"></i> Responsive Web Design</li>
+              </ul>
+            </div>
+            <div class="course-actions">
+<!--              <button class="btn add-to-cart" th:text="'Add to Cart - $'+${courseDetails.getPrice()}" >-->
+                <a class="btn add-to-cart" th:href="@{'/cart/'+${courseDetails.getId()}}" th:text="'Add to Cart - $'+${courseDetails.getPrice()}"></a>
+<!--              </button>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
