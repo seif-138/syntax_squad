@@ -12,7 +12,7 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "payment_id")
     private int payment_id;
-    @Column(name = "student_id" ,insertable=false, updatable=false)
+    @Column(name = "student_id" )
 
     private int student_id;
     @Column(name = "course_id")
@@ -21,7 +21,7 @@ public class Payment {
     private LocalDate payment_date;
 
     @ManyToOne
-    @JoinColumn(name = "Student_id")
+    @JoinColumn(name = "Student_id",insertable=false, updatable=false)
     private Student sp;
 
     public Payment() {

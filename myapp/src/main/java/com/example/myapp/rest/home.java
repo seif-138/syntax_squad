@@ -111,6 +111,7 @@ public class home {
 
     @GetMapping("/cart/{id}")
     public String cart(@PathVariable int id) {
+        System.out.println("UID:"+U_id);
         List<Cart> cAs = cartService.findByCourseIdAndStudentId(U_id, id);
         if (cAs.isEmpty() || cAs == null) {
             Cart c = new Cart(U_id, id);
@@ -164,7 +165,7 @@ public class home {
     }
 
     @PostMapping("/payment/check")
-    public String checkPayment(Model model, @RequestParam("cardName") String email, @RequestParam("cardNumber") int cardNum) {
+    public String checkPayment(RedirectAttributes redirectAttributes,Model model, @RequestParam("cardName") String email, @RequestParam("cardNumber") int cardNum) {
 
         Student s = studentService.findByEmail(email);
         System.out.println("\n---------\ncardNum:" + cardNum);
@@ -178,17 +179,20 @@ public class home {
                 for (Cart i : cart) {
                     Payment p = new Payment();
                     p.setCourse_id(i.getCourse_id());
-                    p.setStudent_id(i.getStudent_id());
+                    p.setStudent_id(U_id);
                     p.setPayment_date(LocalDate.now());
                     paymentService.add(p);
                 }
                 cartService.deleteListOfCartItems(cart);
             }
             else{
+                redirectAttributes.addFlashAttribute("alertMessage","Nothing in cart to buy");
                 System.out.println("Nothing in cart to purchase");
             }
         } else {
+            redirectAttributes.addFlashAttribute("alertMessage","Payment failed. Please try again.");
             System.out.println("Payment failed. Please try again.");
+            return "redirect:/payment";
         }
 
 
