@@ -236,7 +236,7 @@ img {
 }
 
 .login__access,
-.login__register {
+.login__register, .login__reset {
   position: absolute;
   left: 0;
   right: 0;
@@ -244,7 +244,7 @@ img {
   transition: transform 0.4s, opacity 0.4s 0.1s;
 }
 
-.login__register {
+.login__register, .login__reset {
   transform: translateX(15rem);
   opacity: 0;
   pointer-events: none;
@@ -287,7 +287,7 @@ img {
   pointer-events: none;
 }
 
-.active .login__register {
+.active .login__register, .login__reset {
   transform: translateX(0);
   opacity: 1;
   pointer-events: initial;
@@ -326,7 +326,7 @@ img {
     margin: initial;
   }
   .login__access,
-  .login__register {
+  .login__register, .login__reset {
     width: 600px;
   }
   .login__title {
