@@ -53,7 +53,7 @@ public class home {
     }
 
     @PostMapping("/register")
-    public String signup(RedirectAttributes redirectAttributes,@RequestParam("fname") String fn, @RequestParam("lname") String ln, @RequestParam("email") String e, @RequestParam("uname") String u, @RequestParam("password") String pass, @RequestParam("cardNum") int CardNum) {
+    public String signup(RedirectAttributes redirectAttributes, @RequestParam("fname") String fn, @RequestParam("lname") String ln, @RequestParam("email") String e, @RequestParam("uname") String u, @RequestParam("password") String pass, @RequestParam("cardNum") int CardNum) {
         String code = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         String rec = "";
         for (int i = 0; i < 12; i++) {
@@ -65,7 +65,7 @@ public class home {
             char z = code.charAt(randi);
             rec += z;
         }
-        Student s = new Student(fn, ln, u, pass, e, CardNum,rec);
+        Student s = new Student(fn, ln, u, pass, e, CardNum, rec);
         redirectAttributes.addFlashAttribute("recoveryKey", rec);
         Student x = studentService.save(s);
         U_id = x.getStudent_id();
@@ -104,7 +104,36 @@ public class home {
             return "index";
         }
     }
-
+    @GetMapping("/reset")
+            public String reset(){
+        return "reset";
+    }
+    String K_id;
+    @PostMapping("/forgetPass")
+    public String forgetpass(RedirectAttributes redirectAttributes,@RequestParam("recKey") String k) {
+        Student s=studentService.findByRecoveryKey(k);
+        if(s!=null){
+            K_id=k;
+            return "reset";
+        }
+        else{
+            redirectAttributes.addFlashAttribute("noRecKey","There is no such recovery key");
+        }
+        return "redirect:/";
+    }
+    @PostMapping("/updatePass")
+    public String updatepass(RedirectAttributes redirectAttributes,@RequestParam("pass1") String p1,@RequestParam("pass2") String p2){
+        Student s=studentService.findByRecoveryKey(K_id);
+        if(p1.equals(p2)){
+            s.setPassword(p1);
+            studentService.save(s);
+            return "redirect:/home";
+        }
+        else{
+            redirectAttributes.addFlashAttribute("noMatch","Passwords are not matching enter them again");
+            return "redirect:/reset";
+        }
+    }
     //    @GetMapping("/home")
 //    public String homePage(){
 //        return "home";

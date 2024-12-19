@@ -9,5 +9,6 @@ public interface StudentService {
     Student findById(int id);
     Student findByEmail(String mail);
     Student save(Student s);
+    Student findByRecoveryKey(String key);
     void deleteById(int id);
 }

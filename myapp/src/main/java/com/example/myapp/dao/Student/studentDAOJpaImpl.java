@@ -54,6 +54,21 @@ public class studentDAOJpaImpl implements StudentDAO {
         return null;
 
     }
+
+    @Override
+    public Student findByRecoveryKey(String key) {
+        try {
+            TypedQuery<Student> query = entityManager.createQuery("from Student s where s.recovery_key=:key", Student.class);
+            query.setParameter("key", key);
+            Student s = query.getSingleResult();
+            return s;
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
     @Override
     public Student save(Student s) {
 

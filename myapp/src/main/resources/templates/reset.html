@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>reset password</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
-    <link rel="stylesheet" href="../static/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
 
     <style>
         /* General Reset */
@@ -75,13 +75,13 @@
 
     <h2 class="login__title">reset password</h2>
     <div class="login__area">
-        <form action="/login" class="login__form" method="post">
+        <form action="/updatePass" class="login__form" method="post">
             <div class="login__content grid">
 
                 <div class="login__area">
                     <div class="login__content grid">
                         <div class="login__box">
-                            <input type="password" id="password" required placeholder=" " class="login__input" name="logpass">
+                            <input type="password" id="password" required placeholder=" " class="login__input" name="pass1">
                             <label for="password" class="login__label">Password</label>
                             <i class="ri-eye-off-fill login__icon login__password" id="resetPassword"></i>
                         </div>
@@ -91,7 +91,7 @@
                 <div class="login__area">
                     <div class="login__content grid">
                         <div class="login__box">
-                            <input type="password" id="reenter_password" required placeholder=" " class="login__input" name="repass">
+                            <input type="password" id="reenter_password" required placeholder=" " class="login__input" name="pass2">
                             <label for="password" class="login__label">Password</label>
                             <i class="ri-eye-off-fill login__icon login__password" id="confPassword"></i>
                         </div>
@@ -103,6 +103,9 @@
     </div>
 </div>
 </div>
-<script src="../static/assets/js/main.js"></script>
+<script src="/assets/js/main.js"></script>
+<script th:if="${noMatch}" th:inline="javascript">
+    alert([[${noMatch}]]);
+</script>
 </body>
 </html>

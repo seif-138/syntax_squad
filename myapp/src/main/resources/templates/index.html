@@ -123,9 +123,9 @@
     <div class="login__forgot-password" style="display: none;">
         <h2 class="login__title">Reset Your Password</h2>
 
-        <form action="" class="login__form">
+        <form action="/forgetPass" class="login__form" method="post">
             <div class="login__box">
-                <input type="password" id="forgetpass" required placeholder=" " class="login__input">
+                <input type="password" id="forgetpass" required placeholder=" " class="login__input" name="recKey">
                 <label for="forgetpass" class="login__label">Enter your recovery key</label>
                 <i class="ri-eye-off-fill login__icon login__password" id="loginforgetPassword"></i>
             </div>
@@ -141,5 +141,8 @@
 
     <!--=============== MAIN JS ===============-->
     <script src="/assets/js/main.js"></script>
+    <script th:if="${noRecKey}" th:inline="javascript">
+        alert([[${noRecKey}]]);
+    </script>
 </body>
 </html>

@@ -39,6 +39,11 @@ public class StudentServiceImpl implements StudentService {
 
     }
 
+    @Override
+    public Student findByRecoveryKey(String key) {
+        return studentDAO.findByRecoveryKey(key);
+    }
+
     @Transactional
     @Override
     public void deleteById(int id) {

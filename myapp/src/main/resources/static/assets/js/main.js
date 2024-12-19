@@ -79,31 +79,32 @@ document.addEventListener("DOMContentLoaded", () => {
         forgotPasswordSection.style.display = "none";
         loginAccessRegister.style.display = "grid";
     });
-
-    // Handle "Forgot Password" form submission
-    document.querySelector(".login__forgot-password form").addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        const email = document.getElementById("forgotEmail").value;
-
-        // Send email to server for reset link
-        fetch("/send-reset-link", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email }),
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert("Reset link sent! Check your email.");
-            } else {
-                alert("Failed to send reset link. Please try again.");
-            }
-        })
-        .catch(error => {
-            console.error("Error:", error);
-        });
-    });
 });
+
+//     // Handle "Forgot Password" form submission
+//     document.querySelector(".login__forgot-password form").addEventListener("submit", (e) => {
+//         e.preventDefault();
+//
+//         const email = document.getElementById("forgotEmail").value;
+//
+//         // Send email to server for reset link
+//         fetch("/send-reset-link", {
+//             method: "POST",
+//             headers: {
+//                 "Content-Type": "application/json",
+//             },
+//             body: JSON.stringify({ email }),
+//         })
+//         .then(response => response.json())
+//         .then(data => {
+//             if (data.success) {
+//                 alert("Reset link sent! Check your email.");
+//             } else {
+//                 alert("Failed to send reset link. Please try again.");
+//             }
+//         })
+//         .catch(error => {
+//             console.error("Error:", error);
+//         });
+//     });
+// });
