@@ -172,16 +172,14 @@ public class home {
             System.out.println("Payment processed successfully!");
             List<Cart> cart = cartService.findByStudentId(s.getStudent_id());
             List<student_courses> coursesincart = studentCourseService.enrollCoursesFromCart(cart);
-            for(Cart i:cart){
-                Payment p=new Payment();
-                p.setCourse_id(i.getCourse_id());
-                p.setStudent_id(i.getStudent_id());
-                p.setPayment_date(LocalDate.now());
-                paymentService.add(p);
-            }
-            cartService.deleteListOfCartItems(cart);
-
-
+                for (Cart i : cart) {
+                    Payment p = new Payment();
+                    p.setCourse_id(i.getCourse_id());
+                    p.setStudent_id(i.getStudent_id());
+                    p.setPayment_date(LocalDate.now());
+                    paymentService.add(p);
+                }
+                cartService.deleteListOfCartItems(cart);
         } else {
             System.out.println("Payment failed. Please try again.");
         }
