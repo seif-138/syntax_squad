@@ -53,9 +53,9 @@ public class home {
     }
 
     @PostMapping("/register")
-    public String signup(@RequestParam("fname") String fn, @RequestParam("lname") String ln, @RequestParam("email") String e, @RequestParam("uname") String u, @RequestParam("password") String pass,@RequestParam("cardNum") int CardNum) {
-        Student s = new Student(fn, ln, u, pass, e,CardNum);
-       Student x= studentService.save(s);
+    public String signup(@RequestParam("fname") String fn, @RequestParam("lname") String ln, @RequestParam("email") String e, @RequestParam("uname") String u, @RequestParam("password") String pass, @RequestParam("cardNum") int CardNum) {
+        Student s = new Student(fn, ln, u, pass, e, CardNum);
+        Student x = studentService.save(s);
         U_id = x.getStudent_id();
         return "redirect:/home";
     }
@@ -112,7 +112,7 @@ public class home {
     @GetMapping("/cart/{id}")
     public String cart(@PathVariable int id) {
         List<Cart> cAs = cartService.findByCourseIdAndStudentId(U_id, id);
-        if (cAs.isEmpty()||cAs==null) {
+        if (cAs.isEmpty() || cAs == null) {
             Cart c = new Cart(U_id, id);
             cartService.addItem(c);
         }
@@ -136,9 +136,10 @@ public class home {
 
     @GetMapping("/cart/delete/{id}")
     public String deleteCartitem(@PathVariable int id) {
-        cartService.deleteByStudentAndCourseId(U_id,id);
+        cartService.deleteByStudentAndCourseId(U_id, id);
         return "redirect:/cart";
     }
+
     int tmpid;
 
     @GetMapping("/details/{id}")
@@ -169,9 +170,11 @@ public class home {
         System.out.println("\n---------\ncardNum:" + cardNum);
         System.out.println(cardNum + 1);
         if (s.getPaymentCard() == cardNum) {
-            System.out.println("Payment processed successfully!");
+
             List<Cart> cart = cartService.findByStudentId(s.getStudent_id());
-            List<student_courses> coursesincart = studentCourseService.enrollCoursesFromCart(cart);
+            if (!cart.isEmpty()) {
+                List<student_courses> coursesincart = studentCourseService.enrollCoursesFromCart(cart);
+                System.out.println("Payment processed successfully!");
                 for (Cart i : cart) {
                     Payment p = new Payment();
                     p.setCourse_id(i.getCourse_id());
@@ -180,6 +183,10 @@ public class home {
                     paymentService.add(p);
                 }
                 cartService.deleteListOfCartItems(cart);
+            }
+            else{
+                System.out.println("Nothing in cart to purchase");
+            }
         } else {
             System.out.println("Payment failed. Please try again.");
         }
