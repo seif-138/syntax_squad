@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reset password</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
+    <link rel="stylesheet" href="../static/assets/css/styles.css">
+
+    <style>
+        /* General Reset */
+        body, h1, h2, p, ul, li {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+
+
+        header h1 {
+            font-size: 2rem;
+        }
+
+        /* Container Styling */
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        /* Headings */
+        h2 {
+            color: #000;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Paragraphs */
+        p {
+            margin-bottom: 1rem;
+        }
+
+        /* List Styling */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            background: #f4f4f4;
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            border-radius: 5px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="login__access">
+
+    <h2 class="login__title">reset password</h2>
+    <div class="login__area">
+        <form action="/login" class="login__form" method="post">
+            <div class="login__content grid">
+
+                <div class="login__area">
+                    <div class="login__content grid">
+                        <div class="login__box">
+                            <input type="password" id="password" required placeholder=" " class="login__input" name="logpass">
+                            <label for="password" class="login__label">Password</label>
+                            <i class="ri-eye-off-fill login__icon login__password" id="resetPassword"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="login__area">
+                    <div class="login__content grid">
+                        <div class="login__box">
+                            <input type="password" id="reenter_password" required placeholder=" " class="login__input" name="repass">
+                            <label for="password" class="login__label">Password</label>
+                            <i class="ri-eye-off-fill login__icon login__password" id="confPassword"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="login__button">Update</button>
+        </form>
+    </div>
+</div>
+<script src="/assets/js/main.js"></script>
+</body>
+</html>
