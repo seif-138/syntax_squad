@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2024 at 09:30 PM
+-- Generation Time: Dec 20, 2024 at 12:14 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -147,7 +147,7 @@ INSERT INTO `student` (`Student_id`, `first_name`, `last_name`, `recovery_key`, 
 (8, 'hamza', 'farghali', 'hqiw-jO1G-3Jn3', 'hamzaF', '122333', 'hamza.farghali@gmail.com', 123456789),
 (9, 'soliman', 'elgendy', 'JN8J-yU96-Ldqp', 'sol.g', '123456', 'soliman@gmail.com', 111111111),
 (10, 'hema', 'farg', 'pmnp-zFDl-Oy4J', 'farg', '1234', 'farg@gmail.com', 123456788),
-(11, 'haha', 'gaga', 'BBDF-YMbY-vlOL', 'gagag', '123', 'hamzafarghali@gmail.com', 111111112);
+(11, 'haha', 'gaga', 'BBDF-YMbY-vlOL', 'gagag', '12345', 'hamzafarghali@gmail.com', 111111112);
 
 -- --------------------------------------------------------
 
