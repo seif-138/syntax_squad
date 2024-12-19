@@ -23,7 +23,8 @@ public class Student {
     private String email;
     @Column(name="Payment_Card")
     private int paymentCard;
-
+    @Column(name = "recovery_key")
+    private String recovery_key;
     @OneToMany(mappedBy = "sp")
     private List<Payment> p;
 
@@ -49,6 +50,16 @@ public class Student {
         this.password = password;
         this.email = email;
         this.paymentCard = paymentCard;
+    }
+
+    public Student(String first_name, String last_name, String username, String password, String email, int paymentCard, String recovery_key) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.paymentCard = paymentCard;
+        this.recovery_key = recovery_key;
     }
     // seters and getter
 
@@ -109,6 +120,14 @@ public class Student {
     }
     // to string method
 
+
+    public String getRecovery_key() {
+        return recovery_key;
+    }
+
+    public void setRecovery_key(String recovery_key) {
+        this.recovery_key = recovery_key;
+    }
 
     @Override
     public String toString() {

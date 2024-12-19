@@ -83,5 +83,8 @@
     <script th:if="${alertMessage}" th:inline="javascript">
         alert([[${alertMessage}]]);
     </script>
+    <script th:if="${recoveryKey}" th:inline="javascript">
+        alert('your recovery key is: '+[[${recoveryKey}]]);
+    </script>
   </body>
 </html>

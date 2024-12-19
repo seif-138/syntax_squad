@@ -53,8 +53,20 @@ public class home {
     }
 
     @PostMapping("/register")
-    public String signup(@RequestParam("fname") String fn, @RequestParam("lname") String ln, @RequestParam("email") String e, @RequestParam("uname") String u, @RequestParam("password") String pass, @RequestParam("cardNum") int CardNum) {
-        Student s = new Student(fn, ln, u, pass, e, CardNum);
+    public String signup(RedirectAttributes redirectAttributes,@RequestParam("fname") String fn, @RequestParam("lname") String ln, @RequestParam("email") String e, @RequestParam("uname") String u, @RequestParam("password") String pass, @RequestParam("cardNum") int CardNum) {
+        String code = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        String rec = "";
+        for (int i = 0; i < 12; i++) {
+            if (i % 4 == 0 && i != 0) {
+                rec += "-";
+            }
+            double rand = Math.random() * 62;
+            int randi = (int) rand;
+            char z = code.charAt(randi);
+            rec += z;
+        }
+        Student s = new Student(fn, ln, u, pass, e, CardNum,rec);
+        redirectAttributes.addFlashAttribute("recoveryKey", rec);
         Student x = studentService.save(s);
         U_id = x.getStudent_id();
         return "redirect:/home";
@@ -111,7 +123,7 @@ public class home {
 
     @GetMapping("/cart/{id}")
     public String cart(@PathVariable int id) {
-        System.out.println("UID:"+U_id);
+        System.out.println("UID:" + U_id);
         List<Cart> cAs = cartService.findByCourseIdAndStudentId(U_id, id);
         if (cAs.isEmpty() || cAs == null) {
             Cart c = new Cart(U_id, id);
@@ -165,7 +177,7 @@ public class home {
     }
 
     @PostMapping("/payment/check")
-    public String checkPayment(RedirectAttributes redirectAttributes,Model model, @RequestParam("cardName") String email, @RequestParam("cardNumber") int cardNum) {
+    public String checkPayment(RedirectAttributes redirectAttributes, Model model, @RequestParam("cardName") String email, @RequestParam("cardNumber") int cardNum) {
 
         Student s = studentService.findByEmail(email);
         System.out.println("\n---------\ncardNum:" + cardNum);
@@ -184,13 +196,12 @@ public class home {
                     paymentService.add(p);
                 }
                 cartService.deleteListOfCartItems(cart);
-            }
-            else{
-                redirectAttributes.addFlashAttribute("alertMessage","Nothing in cart to buy");
+            } else {
+                redirectAttributes.addFlashAttribute("alertMessage", "Nothing in cart to buy");
                 System.out.println("Nothing in cart to purchase");
             }
         } else {
-            redirectAttributes.addFlashAttribute("alertMessage","Payment failed. Please try again.");
+            redirectAttributes.addFlashAttribute("alertMessage", "Payment failed. Please try again.");
             System.out.println("Payment failed. Please try again.");
             return "redirect:/payment";
         }
