@@ -1,27 +1,116 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/styles.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Instructor Dashboard</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f4f4f4;
-        }
-        h1 {
-            color: #333;}
-    </style>
 </head>
-<body>
-<div class="dashboard">
-    <h1>Instructor Dashboard</h1>
+
+<body style="font-family: 'Poppins', sans-serif; margin: 0; padding: 0;">
+<section class="hero" style="background: linear-gradient(to right, #007bff, #00c6ff);; padding: 20px; text-align: center;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto;">
+        <h2 class="hero-title" style="font-size: 2rem; font-weight: bold; color: #333;">Instructor Dashboard</h2>
+    </div>
+</section>
+
+<!-- Main Content -->
+<div class="main-content" style="padding: 20px;">
+    <div class="row" style="margin: 0;">
+        <div class="col-md-12" style="width: 100%; padding: 10px; box-sizing: border-box;">
+            <div class="table-wrapper" style="background-color: #f8f9fa; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px;">
+
+                <!-- Table Title -->
+                <div class="table-title" style="margin-bottom: 20px;">
+                    <div class="row" style="display: flex; align-items: center; justify-content: space-between; margin: 0;">
+                        <div class="col-sm-6" style="text-align: left;">
+                            <h2 style="margin: 0;">Manage Course</h2>
+                        </div>
+                        <div class="col-sm-6" style="text-align: right;">
+                            <a href="#addCourseModal" style="background-color: #28a745; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; margin-right: 10px;">Add New Course</a>
+                            <a href="#UpdateCourseModal" style="background-color: #28a745; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; margin-right: 10px;">Update Course</a>
+                            <a href="#deleteCourseModal" style="background-color: #dc3545; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Delete Course</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                    <thead style="background-color: #343a40; color: white;">
+                    <tr>
+                        <th style="padding: 10px; text-align: left;">
+                    <span class="custom-checkbox">
+                      <input type="checkbox" id="selectAll" style="margin-right: 5px;">
+                    </span>
+                        </th>
+                        <th style="padding: 10px; text-align: left;">Course ID</th>
+                        <th style="padding: 10px; text-align: left;">Title</th>
+                        <th style="padding: 10px; text-align: left;">Price</th>
+                        <th style="padding: 10px; text-align: left;">Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr style="border-bottom: 1px solid #dee2e6;">
+                        <td style="padding: 10px;">
+                    <span class="custom-checkbox">
+                      <input type="checkbox" id="checkbox1" name="options[]" value="1">
+                    </span>
+                        </td>
+                        <td style="padding: 10px;"></td>
+                        <td style="padding: 10px;"></td>
+                        <td style="padding: 10px;"></td>
+                        <td style="padding: 10px;"></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #dee2e6;">
+                        <td style="padding: 10px;">
+                    <span class="custom-checkbox">
+                      <input type="checkbox" id="checkbox2" name="options[]" value="1">
+                    </span>
+                        </td>
+                        <td style="padding: 10px;"></td>
+                        <td style="padding: 10px;"></td>
+                        <td style="padding: 10px;"></td>
+                        <td style="padding: 10px;"></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #dee2e6;">
+                        <td style="padding: 10px;">
+                    <span class="custom-checkbox">
+                      <input type="checkbox" id="checkbox3" name="options[]" value="1">
+                    </span>
+                        </td>
+                        <td style="padding: 10px;"></td>
+                        <td style="padding: 10px;"></td>
+                        <td style="padding: 10px;"></td>
+                        <td style="padding: 10px;"></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #dee2e6;">
+                        <td style="padding: 10px;">
+                    <span class="custom-checkbox">
+                      <input type="checkbox" id="checkbox4" name="options[]" value="1">
+                    </span>
+                        </td>
+                        <td style="padding: 10px;"></td>
+                        <td style="padding: 10px;"></td>
+                        <td style="padding: 10px;"></td>
+                        <td style="padding: 10px;"></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #dee2e6;">
+                        <td style="padding: 10px;">
+                    <span class="custom-checkbox">
+                      <input type="checkbox" id="checkbox5" name="options[]" value="1">
+                    </span>
+                        </td>
+                        <td style="padding: 10px;"></td>
+                        <td style="padding: 10px;"></td>
+                        <td style="padding: 10px;"></td>
+                        <td style="padding: 10px;"></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
