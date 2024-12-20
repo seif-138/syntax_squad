@@ -96,7 +96,7 @@ public class home {
             } else {
                 if (i.getPass().equals(p)) {
                     System.out.println("Password is correct");
-                    return "redirect:/home";
+                    return "redirect:/instructor";
                 } else {
                     System.out.println("password is incorrect");
                 }
@@ -127,7 +127,7 @@ public class home {
         if(p1.equals(p2)){
             s.setPassword(p1);
             studentService.save(s);
-            return "redirect:/home";
+            return "redirect:/";
         }
         else{
             redirectAttributes.addFlashAttribute("noMatch","Passwords are not matching enter them again");
@@ -148,6 +148,10 @@ public class home {
         model.addAttribute("courses", sc);
         model.addAttribute("notE", not);
         return "home";
+    }
+    @GetMapping("/instructor")
+    public String instructor(){
+        return "instructor";
     }
 
     @GetMapping("/cart/{id}")
