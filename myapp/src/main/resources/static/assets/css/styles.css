@@ -237,7 +237,6 @@ img {
 
 .login__access,
 .login__register, .login__reset {
-  position: absolute;
   left: 0;
   right: 0;
   width: 100%;
@@ -996,4 +995,11 @@ input:focus {
   .course-details-wrapper {
     grid-template-columns: 1fr 1.5fr;
   }
+}
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  text-align: center;
 }
