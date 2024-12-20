@@ -235,7 +235,7 @@ img {
   color: var(--first-color-alt);
 }
 
-.login__access
+.login__access,.login__reset
  {
   left: 0;
 
@@ -246,13 +246,6 @@ img {
 .login__register
 {
   position: absolute;
-  left: 0;
-
-  right: 0; 
-  width: 100%;
-  transition: transform 0.4s, opacity 0.4s 0.1s;
-}
-.login__reset {
   left: 0;
 
   right: 0;
