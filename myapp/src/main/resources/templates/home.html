@@ -55,7 +55,9 @@
             <a href th:href="@{'/details/'+${course.getId()}}" class="btn">View Details</a>
           </div>
         </div>
+
       </div>
+
     </section>
     <hr>
     <section class="courses">
@@ -79,6 +81,22 @@
                 </div>
             </div>
         </div>
+        <footer>
+            <div style="width: 100%; background-color: #333; color: #fff; padding: 20px; border-radius: 10px; box-sizing: border-box; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); text-align: center;">
+                <div style="margin-bottom: 20px;">
+                    <p style="margin: 10px 0; line-height: 1.6;">We start live sessions every week on this Discord link.</p>
+                    <p style="margin: 10px 0; line-height: 1.6;">You should enter this Discord: <a href="https://discord.gg/rpVuUwW4" target="_blank" style="color: #00bfff; text-decoration: none; font-weight: bold;">Discord</a></p>
+                    <p style="margin: 10px 0; line-height: 1.6;">If you are not familiar with Discord, you can join this Google Meet instead: <a href="https://meet.google.com/vpp-zupg-juf" target="_blank" style="color: #00bfff; text-decoration: none; font-weight: bold;">Google Meet</a></p>
+                </div>
+                <div>
+                    <p style="margin: 10px 0; line-height: 1.6;">Don't forget to join our WhatsApp group to get notifications and stay up-to-date: <a href="https://chat.whatsapp.com/LdkT94po6qAIWbh4Ahe2AE" target="_blank" style="color: #00bfff; text-decoration: none; font-weight: bold;">WhatsApp</a></p>
+                </div>
+            </div>
+        </footer>
+
+
+
+
     </section>
     <script th:if="${alertMessage}" th:inline="javascript">
         alert([[${alertMessage}]]);
