@@ -411,13 +411,16 @@ fieldset {
 }
 /*=============== FORGOT PASSWORD ===============*/
 .login__forgot-password {
-  background-color: var(--container-color);
   border-radius: 1rem;
   padding: 2rem;
   width: 100%;
   max-width: 400px;
-  margin: auto;
+  margin-left: 400px;
   text-align: center;
+  margin-top: 40px;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+
 }
 
 .login__forgot-password h2 {
