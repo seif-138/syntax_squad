@@ -9,13 +9,11 @@ import com.example.myapp.Service.Student_course.Student_courseService;
 import com.example.myapp.entity.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -150,10 +148,22 @@ public class home {
         return "home";
     }
     @GetMapping("/instructor")
-    public String instructor(){
+    public String instructor(Model model){
+        List<Courses> avaliableCourse=coursesService.findAll();
+        model.addAttribute("avalCourses",avaliableCourse);
         return "instructor";
     }
-
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable int id)  {
+        try {
+            System.out.println("SElected co: " + id);
+            coursesService.deleteById(id);
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
+        return "redirect:/instructor";
+    }
     @GetMapping("/cart/{id}")
     public String cart(@PathVariable int id) {
         System.out.println("UID:" + U_id);
