@@ -8,15 +8,48 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Instructor Dashboard</title>
 </head>
-
 <body style="font-family: 'Poppins', sans-serif; margin: 0; padding: 0;">
-<section class="hero" style="background: linear-gradient(to right, #007bff, #00c6ff);; padding: 20px; text-align: center;">
-    <div class="container" style="max-width: 1200px; margin: 0 auto;">
-        <h2 class="hero-title" style="font-size: 2rem; font-weight: bold; color: #333;">Instructor Dashboard</h2>
-    </div>
-</section>
+<style>
+    /* Navbar */
+    .navbar {
+        background: #222;
+        color: #fff;
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    .navbar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .logo a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    .nav-links a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 20px;
+    }
+</style>
+<header class="navbar">
+    <div class="container">
 
-<!-- Main Content -->
+        <h1 class="logo"><a href="/home" > Syntax Squad</a></h1>
+        <h2 class="hero-title" style="font-size: 2rem; font-weight: bold;">Instructor Dashboard</h2>
+        <nav>
+            <ul class="nav-links" >
+                <li>
+                    <a href="/"> Log out</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+</header>
 <div class="main-content" style="padding: 20px;">
     <div class="row" style="margin: 0;">
         <div class="col-md-12" style="width: 100%; padding: 10px; box-sizing: border-box;">
@@ -29,7 +62,7 @@
                             <h2 style="margin: 0;">Manage Course</h2>
                         </div>
                         <div class="col-sm-6" style="text-align: right;">
-                            <a href="#addCourseModal" style="background-color: #28a745; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; margin-right: 10px;">Add New Course</a>
+                            <a href="addCourse.html" style="background-color: #28a745; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; margin-right: 10px;">Add New Course</a>
                             <a href="#UpdateCourseModal" style="background-color: #28a745; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; margin-right: 10px;">Update Course</a>
 <!--                            <a  th:href="@{'/delete' }"  style="background-color: #dc3545; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Delete Course</a>-->
                         </div>
