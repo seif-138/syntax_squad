@@ -142,5 +142,14 @@
     <script th:if="${noRecKey}" th:inline="javascript">
         alert([[${noRecKey}]]);
     </script>
+    <script th:if="${NoAccount}" th:inline="javascript">
+        alert([[${NoAccount}]]);
+    </script>
+    <script th:if="${incorrectPass}" th:inline="javascript">
+        alert([[${incorrectPass}]]);
+    </script>
+    <script th:if="${passUpdate}" th:inline="javascript">
+        alert([[${passUpdate}]]);
+    </script>
 </body>
 </html>

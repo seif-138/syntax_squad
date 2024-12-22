@@ -10,8 +10,10 @@ import com.example.myapp.entity.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -71,10 +73,11 @@ public class home {
     }
 
     @PostMapping("/login")
-    public String login(@RequestParam("logmail") String l, @RequestParam("logpass") String p, @RequestParam("user_type") String user) {
+    public String login(RedirectAttributes redirectAttributes,@RequestParam("logmail") String l, @RequestParam("logpass") String p, @RequestParam("user_type") String user) {
         if (user.equals("student")) {
             Student s = studentService.findByEmail(l);
             if (s == null) {
+                redirectAttributes.addFlashAttribute("NoAccount","No account with this email");
                 System.out.println("No account with this email ");
             } else {
                 if (s.getPassword().equals(p)) {
@@ -82,24 +85,27 @@ public class home {
                     U_id = s.getStudent_id();
                     return "redirect:/home";
                 } else {
+                    redirectAttributes.addFlashAttribute("incorrectPass","password you entered is incorrect");
                     System.out.println("password is incorrect");
                 }
             }
-            return "index";
+            return "redirect:/";
         } else {
             Instructor i = instructorService.findByEmail(l);
             System.out.println(i);
             if (i == null) {
+                redirectAttributes.addFlashAttribute("NoAccount","No account with this email");
                 System.out.println("No account with this email ");
             } else {
                 if (i.getPass().equals(p)) {
                     System.out.println("Password is correct");
                     return "redirect:/instructor";
                 } else {
+                    redirectAttributes.addFlashAttribute("incorrectPass","password you entered is incorrect");
                     System.out.println("password is incorrect");
                 }
             }
-            return "index";
+            return "redirect:/";
         }
     }
     @GetMapping("/reset")
@@ -125,6 +131,7 @@ public class home {
         if(p1.equals(p2)){
             s.setPassword(p1);
             studentService.save(s);
+            redirectAttributes.addFlashAttribute("passUpdate","Password updated succesfully now you can login with the new password");
             return "redirect:/";
         }
         else{
@@ -162,6 +169,45 @@ public class home {
         catch (Exception e) {
             System.out.println(e);
         }
+        return "redirect:/instructor";
+    }
+    @GetMapping("/update")
+    public String updatePage(){
+        return "UpdateCourse";
+    }
+    int updatedCourseId;
+    @GetMapping("/update/{id}")
+    public String update(Model model,@PathVariable int id){
+        updatedCourseId=id;
+        Courses c=coursesService.findById(id);
+        model.addAttribute("upCourse",c);
+        return "UpdateCourse";
+    }
+    @GetMapping("/addCourse")
+    public String addCourse(){
+        return "addCourse";
+    }
+@PostMapping("/updateCourse")
+public String upcors(@RequestParam("courseTitle") String title,@RequestParam("coursePrice") double price,@RequestParam("courseDescription")String desc,@RequestParam("courseImage") MultipartFile image) throws IOException {
+Courses c=coursesService.findById(updatedCourseId);
+    c.setDescription(desc);
+    c.setPrice(price);
+    c.setTitle(title);
+    if(!image.isEmpty()) {
+        c.setImage_data(image.getBytes());
+    }
+    coursesService.save(c);
+    return "redirect:/instructor";
+}
+
+    @PostMapping("/addCourseDet")
+    public String addC(@RequestParam("courseTitle") String title,@RequestParam("coursePrice") double price,@RequestParam("courseDescription")String desc,@RequestParam("courseImage") MultipartFile image) throws IOException {
+        Courses c=new Courses();
+        c.setDescription(desc);
+        c.setPrice(price);
+        c.setTitle(title);
+        c.setImage_data(image.getBytes());
+        coursesService.save(c);
         return "redirect:/instructor";
     }
     @GetMapping("/cart/{id}")

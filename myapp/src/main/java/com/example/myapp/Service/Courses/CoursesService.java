@@ -8,4 +8,5 @@ public interface CoursesService {
     List<Courses> findAll();
     Courses findById(int id);
     void deleteById(int id) throws Exception;
+    Courses save(Courses c);
 }

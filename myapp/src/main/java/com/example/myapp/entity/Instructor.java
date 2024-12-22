@@ -22,17 +22,14 @@ public class Instructor {
     @Column(name="last_name")
     private String last_name;
 
-    @OneToMany(mappedBy = "inst", cascade = CascadeType.ALL)
-    private List<Courses> courses;
 
-    public Instructor(int id, String user, String email, String pass, String first_name, String last_name, List<Courses> courses) {
+    public Instructor(int id, String user, String email, String pass, String first_name, String last_name) {
         this.id = id;
         this.user = user;
         this.email = email;
         this.pass = pass;
         this.first_name = first_name;
         this.last_name = last_name;
-        this.courses = courses;
     }
 
     public Instructor(){};
@@ -93,13 +90,7 @@ public class Instructor {
         this.last_name = last_name;
     }
 
-    public List<Courses> getCourses() {
-        return courses;
-    }
 
-    public void setCourses(List<Courses> courses) {
-        this.courses = courses;
-    }
 
     @Override
     public String toString() {

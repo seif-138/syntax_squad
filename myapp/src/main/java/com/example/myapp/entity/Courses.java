@@ -15,12 +15,6 @@ public class Courses {
     private String title;
     @Column(name = "price")
     private double price;
-    @Column(name = "instructor_id", insertable=false, updatable=false)
-    private int instructorID;
-
-    @ManyToOne
-    @JoinColumn(name = "instructor_id")
-    private Instructor inst;
     @Column(name = "created_at")
     private char created_at;
     @Column(name = "description")
@@ -32,20 +26,18 @@ public class Courses {
     public Courses() {
     }
 
-    public Courses(int id, String title, double price, int instructorID, char created_at, byte[] image_data) {
+    public Courses(int id, String title, double price, char created_at, byte[] image_data) {
         this.id = id;
         this.title = title;
         this.price = price;
-        this.instructorID = instructorID;
         this.created_at = created_at;
         this.image_data = image_data;
     }
 
-    public Courses(int id, String title, double price, int instructorID, char created_at) {
+    public Courses(int id, String title, double price, char created_at) {
         this.id = id;
         this.title = title;
         this.price = price;
-        this.instructorID = instructorID;
         this.created_at = created_at;
     }
 
@@ -53,20 +45,12 @@ public class Courses {
         this.id = id;
         this.title = title;
         this.price = price;
-        this.instructorID = instructorID;
-        this.inst = inst;
+
         this.created_at = created_at;
         this.image_data = image_data;
     }
 
-    public Courses(int id, String title, double price, int instructorID, Instructor inst, char created_at) {
-        this.id = id;
-        this.title = title;
-        this.price = price;
-        this.instructorID = instructorID;
-        this.inst = inst;
-        this.created_at = created_at;
-    }
+
 
     public int getId() {
         return id;
@@ -92,21 +76,7 @@ public class Courses {
         this.price = price;
     }
 
-    public int getInstructorID() {
-        return instructorID;
-    }
 
-    public void setInstructorID(int instructorID) {
-        this.instructorID = instructorID;
-    }
-
-    public Instructor getInst() {
-        return inst;
-    }
-
-    public void setInst(Instructor inst) {
-        this.inst = inst;
-    }
 
     public char getCreated_at() {
         return created_at;
@@ -139,8 +109,6 @@ public class Courses {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", price='" + price + '\'' +
-                ", instructorID=" + instructorID +
-                ", inst=" + inst +
                 ", created_at=" + created_at +
                  +
                 '}';

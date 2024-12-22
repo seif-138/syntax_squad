@@ -50,9 +50,12 @@
     </div>
 </header>
 <h2 style="text-align: center; margin-top: 30px; color: #222;">Add New Course</h2>
-<form action="/add-course" method="POST" style="max-width: 400px; margin: auto; padding: 20px; background: white; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+<form action="/addCourseDet" method="POST" style="max-width: 400px; margin: auto; padding: 20px; background: white; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);"  enctype="multipart/form-data">
     <label for="courseTitle" style="display: block; margin-bottom: 8px;">Course Title:</label>
     <input type="text" id="courseTitle" name="courseTitle" required style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">
+
+    <label for="courseImage" style="display: block; margin-bottom: 8px;">Image:</label>
+    <input type="file" id="courseImage" name="courseImage" required style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">
 
     <label for="coursePrice" style="display: block; margin-bottom: 8px;">Price:</label>
     <input type="number" id="coursePrice" name="coursePrice" required style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">

@@ -30,4 +30,9 @@ public class CoursesServiceImpl implements CoursesService{
     public void deleteById(int id) throws Exception {
         coursesDOA.deleteById(id);
     }
+    @Transactional
+    @Override
+    public Courses save(Courses c) {
+        return coursesDOA.save(c);
+    }
 }

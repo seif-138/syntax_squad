@@ -102,5 +102,9 @@
 </div>
 
 <script src="/assets/js/main.js"></script>
+<script th:if="${noMatch}" th:inline="javascript">
+    alert([[${noMatch}]]);
+</script>
+
 </body>
 </html>

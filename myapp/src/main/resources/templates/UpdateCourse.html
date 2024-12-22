@@ -50,17 +50,51 @@
   </div>
 </header>
 <h2 style="text-align: center; margin-top: 30px; color: #222;">Update Course</h2>
-<form action="/update-course" method="POST" style="max-width: 400px; margin: auto; padding: 20px; background: white; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+<form action="/updateCourse" method="POST"  enctype="multipart/form-data" style="max-width: 400px; margin: auto; padding: 20px; background: white; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
   <label for="courseTitle" style="display: block; margin-bottom: 8px;">Course Title:</label>
-  <input type="text" id="courseTitle" name="courseTitle" required style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">
+  <input type="text" id="courseTitle" name="courseTitle" th:value="${upCourse.getTitle()}" required style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;" >
+
+  <label for="courseImage" style="display: block; margin-bottom: 8px;" >Image:</label>
+  <input type="file" id="courseImage" name="courseImage"  style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;"  >
+  <img src th:src="@{'/image/' + ${upCourse.getId()}}" alt th:alt="${upCourse.getTitle()}" width="100px" height="100px" />
+
+
 
   <label for="coursePrice" style="display: block; margin-bottom: 8px;">Price:</label>
-  <input type="number" id="coursePrice" name="coursePrice" required style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;">
+  <input type="number" id="coursePrice" name="coursePrice" required style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;" th:value="${upCourse.getPrice()}">
 
   <label for="courseDescription" style="display: block; margin-bottom: 8px;">Description:</label>
-  <textarea id="courseDescription" name="courseDescription" rows="4" required style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+  <textarea id="courseDescription" name="courseDescription" rows="4" required style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;" th:text="${upCourse.getDescription()}"></textarea>
 
   <button type="submit" style="background-color: #28a745; color: white; border: none; padding: 10px 15px; cursor: pointer; border-radius: 4px; width: 100%;">Update Course</button>
 </form>
+
+<script>
+  function uploadImage(input) {
+    const courseId = [[${upCourse.getId()}]]; // Get course ID from Thymeleaf
+    const formData = new FormData();
+    formData.append('image', input.files[0]);
+
+    fetch(`/updateCourseImage/${courseId}`, {
+      method: 'POST',
+      body: formData
+    })
+            .then(response => {
+              if (response.ok) {
+                // Update the image preview
+                const previewImage = document.getElementById('previewImage');
+                previewImage.src = URL.createObjectURL(input.files[0]);
+                // Optionally refresh the image from server instead
+                // previewImage.src = `/image/${courseId}?t=${new Date().getTime()}`;
+              } else {
+                alert('Error updating image');
+              }
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              alert('Error updating image');
+            });
+  }
+</script>
 </body>
 </html>

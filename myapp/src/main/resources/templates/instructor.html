@@ -34,6 +34,10 @@
         text-decoration: none;
         font-size: 20px;
     }
+    a{
+        display: inline-block;
+        margin-right: 10px;
+    }
 </style>
 <header class="navbar">
     <div class="container">
@@ -62,8 +66,8 @@
                             <h2 style="margin: 0;">Manage Course</h2>
                         </div>
                         <div class="col-sm-6" style="text-align: right;">
-                            <a href="addCourse.html" style="background-color: #28a745; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; margin-right: 10px;">Add New Course</a>
-                            <a href="#UpdateCourseModal" style="background-color: #28a745; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; margin-right: 10px;">Update Course</a>
+                            <a th:href="@{'/addCourse'}" style="background-color: #28a745; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; margin-right: 10px;">Add New Course</a>
+<!--                            <a href="#UpdateCourseModal" style="background-color: #28a745; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; margin-right: 10px;">Update Course</a>-->
 <!--                            <a  th:href="@{'/delete' }"  style="background-color: #dc3545; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Delete Course</a>-->
                         </div>
                     </div>
@@ -73,27 +77,33 @@
                 <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
                     <thead style="background-color: #343a40; color: white;">
                     <tr>
-                        <th style="padding: 10px; text-align: left;">
-                    <span class="custom-checkbox">
-                    </span>
-                        </th>
+
                         <th style="padding: 10px; text-align: left;">Course ID</th>
                         <th style="padding: 10px; text-align: left;">Title</th>
                         <th style="padding: 10px; text-align: left;">Price</th>
                         <th style="padding: 10px; text-align: left;">Description</th>
+                        <th style="padding: 10px; text-align: left;">
+                    <span class="custom-checkbox">
+                    </span>
+                        </th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr style="border-bottom: 1px solid #dee2e6;" th:each="course: ${avalCourses}">
-                        <td style="padding: 10px;">
-                    <span class="custom-checkbox">
-                       <a class="btn btn-danger" th:href="@{'/delete/'+${course.getId()}}">Delete </a>
-                    </span>
-                        </td>
+
                         <td style="padding: 10px;" th:text="${course.getId()}"></td>
                         <td style="padding: 10px;" th:text="${course.getTitle()}"></td>
                         <td style="padding: 10px;"  th:text="${course.getPrice()}"></td>
                         <td style="padding: 10px;" th:text="${course.getDescription()}"></td>
+                        <td style="padding: 10px;">
+                            <div style="display: flex; gap: 5px;">
+                                <a class="btn btn-warning" style="background-color: #ffc107; border-color: #ffc107;"
+                                   th:href="@{'/update/'+${course.getId()}}">Update</a>
+                                <a class="btn btn-danger" th:href="@{'/delete/'+${course.getId()}}">Delete</a>
+
+                            </div>
+
+                        </td>
                     </tr>
 
 
