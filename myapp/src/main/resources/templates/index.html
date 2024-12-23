@@ -158,5 +158,8 @@
     <script th:if="${passUpdate}" th:inline="javascript">
         alert([[${passUpdate}]]);
     </script>
+    <script th:if="${wrongKey}" th:inline="javascript">
+        alert([[${wrongKey}]]);
+    </script>
 </body>
 </html>

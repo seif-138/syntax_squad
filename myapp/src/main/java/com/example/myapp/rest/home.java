@@ -112,22 +112,28 @@ public class home {
             public String reset(){
         return "reset";
     }
-    String K_id;
+    String K_email;
     @PostMapping("/forgetPass")
-    public String forgetpass(RedirectAttributes redirectAttributes,@RequestParam("recKey") String k) {
-        Student s=studentService.findByRecoveryKey(k);
+    public String forgetpass(RedirectAttributes redirectAttributes,@RequestParam("recKey") String k,@RequestParam("logmail") String mail) {
+        Student s=studentService.findByEmail(mail);
         if(s!=null){
-            K_id=k;
-            return "reset";
+            if(s.getRecovery_key().equals(k)) {
+                K_email = mail;
+                return "reset";
+            }
+            else{
+                redirectAttributes.addFlashAttribute("wrongKey","Wrong recovery key");
+            }
         }
         else{
-            redirectAttributes.addFlashAttribute("noRecKey","There is no such recovery key");
+//redirectAttributes.addFlashAttribute("noRecKey","There is no such recovery key");
+            redirectAttributes.addFlashAttribute("NoAccount","No account with this email");
         }
         return "redirect:/";
     }
     @PostMapping("/updatePass")
     public String updatepass(RedirectAttributes redirectAttributes,@RequestParam("pass1") String p1,@RequestParam("pass2") String p2){
-        Student s=studentService.findByRecoveryKey(K_id);
+        Student s=studentService.findByEmail(K_email);
         if(p1.equals(p2)){
             s.setPassword(p1);
             studentService.save(s);
